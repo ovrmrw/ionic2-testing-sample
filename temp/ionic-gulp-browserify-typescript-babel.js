@@ -42,11 +42,11 @@ module.exports = function (options) {
   //   .plugin(tsify, options.tsifyOptions);
   var babelify = require('babelify');
   var b = browserify(options.src, options.browserifyOptions)
-    .plugin(tsify, options.tsifyOptions)
-    .transform(babelify.configure({
+    .plugin(tsify)
+    .transform("babelify", {
       presets: ["es2015"],
       plugins: ["transform-async-to-generator"]
-    }));
+    });
   /* <<< Edited */
 
 

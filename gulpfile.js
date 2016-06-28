@@ -44,8 +44,8 @@ gulp.task('watch', ['clean'], function (done) {
     function () {
       gulpWatch('app/**/*.scss', function () { gulp.start('sass'); });
       gulpWatch('app/**/*.html', function () { gulp.start('html'); });
-      // buildBrowserify({ watch: true }).on('end', done);
-      webpackBuild({ watch: true }).on('end', done);
+      buildBrowserify({ watch: true }).on('end', done);
+      // webpackBuild({ watch: true }).on('end', done);
     }
   );
 });
@@ -54,22 +54,22 @@ gulp.task('build', ['clean'], function (done) {
   runSequence(
     ['sass', 'html', 'fonts', 'scripts'],
     function () {
-      // buildBrowserify({
-      //   minify: isRelease,
-      //   browserifyOptions: {
-      //     debug: !isRelease
-      //   },
-      //   uglifyOptions: {
-      //     mangle: false
-      //   }
-      // }).on('end', done);
-      webpackBuild({
-        watch: false,
-        statsOptions: {
-          'colors': true,
-          'errorDetails': false
+      buildBrowserify({
+        minify: isRelease,
+        browserifyOptions: {
+          debug: !isRelease
+        },
+        uglifyOptions: {
+          mangle: false
         }
       }).on('end', done);
+      // webpackBuild({
+      //   watch: false,
+      //   statsOptions: {
+      //     'colors': true,
+      //     'errorDetails': false
+      //   }
+      // }).on('end', done);
     }
   );
 });
