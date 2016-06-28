@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "chai": "registry:npm/chai#3.5.0+20160415060238",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
+    "mime": "registry:npm/mime#1.3.0+20160423043021",
+    "sinon": "registry:npm/sinon#1.16.0+20160427193336"
+  },
+  "devDependencies": {},
+  "globalDependencies": {
+    "empower": "registry:dt/empower#0.0.0+20160317120654",
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
+    "mocha": "registry:dt/mocha#2.2.5+20160619032855",
+    "mocha-node": "registry:dt/mocha-node#2.2.5+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160621231320",
+    "power-assert": "registry:dt/power-assert#0.0.0+20160316155526",
+    "power-assert-formatter": "registry:dt/power-assert-formatter#0.0.0+20160317120654"
+  }
+}

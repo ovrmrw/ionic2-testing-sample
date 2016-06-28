@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="about">
+  <ul>
+    <li *ngFor="let text of texts, let i=index" id="text{{i}}">{{text}}</li>
+  </ul>
+</ion-content>
