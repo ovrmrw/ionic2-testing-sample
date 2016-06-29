@@ -10,8 +10,6 @@
   <link ios-href="build/css/app.ios.css" rel="stylesheet">
   <link md-href="build/css/app.md.css" rel="stylesheet">
   <link wp-href="build/css/app.wp.css" rel="stylesheet">
-
-  <!--<script src="node_modules/babel-polyfill/dist/polyfill.js"></script>-->
 </head>
 <body>
 
@@ -22,6 +20,10 @@
   <script src="cordova.js"></script>
   <!-- Polyfill needed for platforms without Promise and Collection support -->
   <script src="build/js/es6-shim.min.js"></script>
+
+  <!-- babel-polyfill for async/await -->
+  <script src="babel-polyfill.min.js"></script>
+
   <!-- Zone.js and Reflect-metadata  -->
   <script src="build/js/Reflect.js"></script>
   <script src="build/js/zone.js"></script>

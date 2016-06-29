@@ -3,7 +3,7 @@ var gulp = require('gulp'),
   watchify = require('watchify'),
   tsify = require('tsify'),
   pretty = require('prettysize'),
-  merge = require('lodash.merge'),
+  merge = require('lodash').merge,
   source = require('vinyl-source-stream'),
   buffer = require('vinyl-buffer'),
   sourcemaps = require('gulp-sourcemaps'),
@@ -39,13 +39,16 @@ module.exports = function (options) {
 
   /* >>> Edited */
   // var b = browserify(options.src, options.browserifyOptions)
-  //   .plugin(tsify, options.tsifyOptions);
+  //   .plugin(tsify, options.tsifyOptions);  
+  console.log('Loading Custom Module: ionic-gulp-browserify-typescript-babel');
+  var stringify = require('stringify');
   var babelify = require('babelify');
   var b = browserify(options.src, options.browserifyOptions)
-    .plugin(tsify)
-    .transform("babelify", {
-      presets: ["es2015"],
-      plugins: ["transform-async-to-generator"]
+    .transform(stringify(['.html'])) // htmlファイルをrequire出来るようにする。
+    .plugin(tsify, options.tsifyOptions) // tsファイルをtarget:es2015でトランスパイル。
+    .transform(babelify, { // tsifyしたデータをbabelでさらにトランスパイル。
+      presets: ['es2015'],
+      extensions: ['.tsx', '.ts'] // これを書かないとtransformされない。
     });
   /* <<< Edited */
 
@@ -61,7 +64,7 @@ module.exports = function (options) {
   function bundle() {
     var debug = options.browserifyOptions.debug;
     return b.bundle()
-      .on('error', options.onError)  /* >>> Edited <<< */
+      .on('error', options.onError)
       .pipe(source(options.outputFile))
       .pipe(buffer())
       .pipe(debug ? sourcemaps.init({ loadMaps: true }) : noop())

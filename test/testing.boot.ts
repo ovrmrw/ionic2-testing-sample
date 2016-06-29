@@ -21,4 +21,4 @@ resetBaseTestProviders();
 setBaseTestProviders(TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS);
 
 
-import '../src-front/specs.ref'; // テストしたいTSファイル
+import '../app-specs/specs.ref'; // テストしたいTSファイル

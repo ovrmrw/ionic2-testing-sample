@@ -45,7 +45,6 @@ gulp.task('watch', ['clean'], function (done) {
       gulpWatch('app/**/*.scss', function () { gulp.start('sass'); });
       gulpWatch('app/**/*.html', function () { gulp.start('html'); });
       buildBrowserify({ watch: true }).on('end', done);
-      // webpackBuild({ watch: true }).on('end', done);
     }
   );
 });
@@ -63,13 +62,6 @@ gulp.task('build', ['clean'], function (done) {
           mangle: false
         }
       }).on('end', done);
-      // webpackBuild({
-      //   watch: false,
-      //   statsOptions: {
-      //     'colors': true,
-      //     'errorDetails': false
-      //   }
-      // }).on('end', done);
     }
   );
 });

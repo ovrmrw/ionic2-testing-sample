@@ -2,7 +2,8 @@ import {Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy} from '@an
 import {NavController} from 'ionic-angular';
 
 @Component({
-  templateUrl: 'build/pages/about/about.html',
+  // templateUrl: 'build/pages/about/about.html',
+  template: require('./about.html'),
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutPage implements OnInit {
@@ -12,7 +13,7 @@ export class AboutPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    (async function () {
+    (async () => {
       this.texts.push('start async');
 
       await new Promise(resolve => {
@@ -23,7 +24,7 @@ export class AboutPage implements OnInit {
         }, 1000);
       });
 
-      this.texts.push('end async');
+      this.texts.push('end async');      
     })();
   }
 
