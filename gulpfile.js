@@ -29,7 +29,7 @@ gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
  * build however you see fit.
  */
 // var buildBrowserify = require('ionic-gulp-browserify-typescript');
-var buildBrowserify = require('./temp/ionic-gulp-browserify-typescript-babel');
+var buildBrowserify = require('./lib/ionic-gulp-browserify-typescript-babel');
 
 var buildSass = require('ionic-gulp-sass-build');
 var copyHTML = require('ionic-gulp-html-copy');
@@ -73,3 +73,7 @@ gulp.task('scripts', copyScripts);
 gulp.task('clean', function () {
   return del('www/build');
 });
+
+
+////////////////////////////////////////////////////////////////////////////
+// My Gulp

@@ -7,7 +7,9 @@
 </ion-header>
 
 <ion-content padding class="about">
-  <ul>
-    <li *ngFor="let text of texts, let i=index" id="text{{i}}">{{text}}</li>
-  </ul>
+  <ion-list inset>
+    <ion-item *ngFor="let text of texts, let i=index" id="text{{i}}">
+      <ion-icon name="ionic" item-left></ion-icon>{{text}}
+    </ion-item>
+  </ion-list>
 </ion-content>

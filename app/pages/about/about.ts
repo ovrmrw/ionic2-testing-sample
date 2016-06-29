@@ -13,18 +13,25 @@ export class AboutPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.showTextsAsync();
+  }
+
+  ionViewLoaded() { }
+
+
+  showTextsAsync() {
     (async () => {
       this.texts.push('start async');
 
       await new Promise(resolve => {
         setTimeout(() => {
           this.texts.push('this message should be shown between "start" and "end".');
-          resolve();
           this.cd.markForCheck();
+          resolve();
         }, 1000);
       });
 
-      this.texts.push('end async');      
+      this.texts.push('end async');
     })();
   }
 

@@ -80,6 +80,11 @@ module.exports = function (config) {
     },
 
 
+    client: {
+      captureConsole: true
+    },
+
+
     // restartOnFileChange: true,
   })
 }

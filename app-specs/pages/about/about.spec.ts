@@ -14,7 +14,7 @@ import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, element
 /* <<< boilerplate */
 
 
-describe('AboutPage TEST ' + '-'.repeat(40), () => {
+describe('TEST: AboutPage Component', () => {
   /* >>> boilerplate */
   let builder: TestComponentBuilder;
 
@@ -28,27 +28,46 @@ describe('AboutPage TEST ' + '-'.repeat(40), () => {
   /* <<< boilerplate */
 
 
-  it('can create', asyncPower(async () => {
+  it('can create, should have title', asyncPower(async () => {
     const fixture = await builder.createAsync(AboutPage);
+    const el = fixture.nativeElement as HTMLElement;
     assert(!!fixture);
+    assert(elementText(el, 'ion-title').trim() === 'About');
   }));
 
 
-  it('exprimental', fakeAsyncPower(() => {
-    let fixture;
+  it('should have texts with delay (fakeAsyncPower ver.)', fakeAsyncPower(() => {
+    let fixture: ComponentFixture<AboutPage>;
     builder.createAsync(AboutPage).then(f => fixture = f);
     tick();
-    const el = fixture.nativeElement as HTMLElement;
-    const TEXTS = 'ul li';
+    const el = fixture.debugElement.nativeElement as HTMLElement;
+    const TEXTS = 'ion-content ion-list ion-item';
 
     fixture.detectChanges();
     assert(elements(el, TEXTS).length === 1);
-    assert(elementText(el, TEXTS, 0) === 'start async');
+    assert(elementText(el, TEXTS, 0).trim() === 'start async');
 
     tick(1000);
     fixture.detectChanges();
     assert(elements(el, TEXTS).length === 3);
-    assert(elementText(el, TEXTS, 2) === 'end async');
+    assert(elementText(el, TEXTS, 2).trim() === 'end async');
   }));
+
+
+  it('should have texts with delay (asyncPower ver.)', asyncPower(async () => {
+    const fixture = await builder.createAsync(AboutPage) as ComponentFixture<AboutPage>;
+    const el = fixture.nativeElement as HTMLElement;
+    const TEXTS = 'ion-content ion-list ion-item';
+
+    fixture.detectChanges();
+    assert(elements(el, TEXTS).length === 1);
+    assert(elementText(el, TEXTS, 0).trim() === 'start async');
+
+    await setTimeoutPromise(1000);
+    fixture.detectChanges();
+    assert(elements(el, TEXTS).length === 3);
+    assert(elementText(el, TEXTS, 2).trim() === 'end async');
+  }));
+
 
 });
