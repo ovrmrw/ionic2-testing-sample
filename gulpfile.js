@@ -77,3 +77,22 @@ gulp.task('clean', function () {
 
 ////////////////////////////////////////////////////////////////////////////
 // My Gulp
+
+const mocha = require('gulp-mocha');
+const plumber = require('gulp-plumber');
+
+const rxjsSpecJS = '{./,}.bundles/webpack.bundle.spec.rxjs.js';
+
+gulp.task('mocha:rxjs', [], () => {
+  gulp.src(rxjsSpecJS)
+    .pipe(plumber())
+    // gulp-mocha needs filepaths so you can't have any plugins before it 
+    .pipe(mocha({
+      useColors: true,
+      reporter: 'spec'
+    }));
+});
+
+gulp.task('mocha:rxjs:w', ['mocha:rxjs'], () => {
+  gulp.watch([rxjsSpecJS], ['mocha:rxjs']);
+});

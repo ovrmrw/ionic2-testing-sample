@@ -13,7 +13,16 @@ $ npm install
 $ ionic serve
 ```
 
-###Test
+###Angular2 Test (jasmine)
 ```
-$ npm run karma (or) npm run karma:w
+$ npm run karma
+or
+$ npm run karma:w
+```
+
+###RxJS Test (mocha)
+```
+$ npm run mocha:rxjs
+or
+$ npm run mocha:rxjs:w
 ```

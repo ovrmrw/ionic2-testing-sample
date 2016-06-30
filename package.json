@@ -9,6 +9,10 @@
     "build:test:w": "webpack --config test/webpack.config.test.js --watch",
     "karma": "npm run build:test && karma start --single-run",
     "karma:w": "npm run build:test && concurrently -k \"npm run build:test:w\" \"karma start\" ",
+    "build:rxjs": "webpack --config test-rxjs/webpack.config.test.js",
+    "build:rxjs:w": "webpack --config test-rxjs/webpack.config.test.js --watch",
+    "mocha:rxjs": "npm run build:rxjs && gulp mocha:rxjs",
+    "mocha:rxjs:w": "npm run build:rxjs && concurrently -k \"npm run build:rxjs:w\" \"gulp mocha:rxjs:w\" ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,7 +40,7 @@
     "ionicons": "3.0.0",
     "lodash": "^4.13.1",
     "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
+    "rxjs": "^5.0.0-beta.9",
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
@@ -60,7 +64,7 @@
     "ionic-gulp-webpack": "^2.0.0",
     "jasmine": "^2.4.1",
     "json-loader": "^0.5.4",
-    "karma": "^1.1.0",
+    "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-mocha-reporter": "^2.0.4",
@@ -70,7 +74,6 @@
     "mocha": "^2.5.3",
     "phantomjs-prebuilt": "^2.1.7",
     "power-assert": "^1.4.1",
-    "prettysize": "0.0.3",
     "run-sequence": "1.1.5",
     "stringify": "^5.1.0",
     "typescript": "^1.8.10",

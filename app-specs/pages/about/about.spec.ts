@@ -6,8 +6,8 @@ import { NavController } from 'ionic-angular';
  *  ===== testing world =====
  */
 /* >>> boilerplate */
-import * as assert from 'power-assert';
-import * as lodash from 'lodash';
+import assert from 'power-assert';
+import lodash from 'lodash';
 import { describe, it, iit, xit, beforeEach, beforeEachProviders, afterEach, inject } from '@angular/core/testing';
 import { TestComponentBuilder, ComponentFixture } from '@angular/compiler/testing';
 import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, elements, elementText } from '../../../test';
