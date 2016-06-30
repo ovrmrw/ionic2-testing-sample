@@ -4,6 +4,18 @@ Testing ionic2
 ---
 
 ###Setup
+Edit l17 in "app/services/facebook.ts".
+
+```
+FB.init(
+    {
+        appId: '【input your facebook appID】',
+        xfbml: false,
+        version: 'v2.5'
+    }
+);
+```
+
 ```
 $ npm install
 ```
