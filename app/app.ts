@@ -3,15 +3,19 @@ import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 // import {TabsPage} from './pages/tabs/tabs';
 import {SignupPage} from './pages/signup/signup';
+import { Store } from './store';
+import { Facebook } from './services/facebook';
+
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  providers: [Store, Facebook]
 })
 export class MyApp {
 
-  private rootPage:any;
+  private rootPage: any;
 
-  constructor(private platform:Platform) {
+  constructor(private platform: Platform) {
     this.rootPage = SignupPage;
 
     platform.ready().then(() => {

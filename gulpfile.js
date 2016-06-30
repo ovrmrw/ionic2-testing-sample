@@ -80,6 +80,7 @@ gulp.task('clean', function () {
 
 const mocha = require('gulp-mocha');
 const plumber = require('gulp-plumber');
+const nightwatch = require('gulp-nightwatch');
 
 const rxjsSpecJS = '{./,}.bundles/webpack.bundle.spec.rxjs.js';
 
@@ -95,4 +96,18 @@ gulp.task('mocha:rxjs', [], () => {
 
 gulp.task('mocha:rxjs:w', ['mocha:rxjs'], () => {
   gulp.watch([rxjsSpecJS], ['mocha:rxjs']);
+});
+
+
+gulp.task('nightwatch',() => {
+  gulp.src('')
+    .pipe(plumber())
+    .pipe(nightwatch({
+      configFile: 'nightwatch.conf.js'
+    }));
+});
+
+gulp.task('nightwatch:w', ['nightwatch'], () => {
+  // gulp.watch(['{./,}app/**/*.{ts,html,scss}'], ['build']);
+  gulp.watch(['{./,}bundles/**/*.js', '{./,}test-{e2e,nightwatch}/**/*.js'], ['nightwatch']);
 });

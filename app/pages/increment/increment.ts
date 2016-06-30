@@ -34,5 +34,8 @@ export class IncrementPage implements OnInit {
   }
 
 
+  get userName() { return this.service.userName$; }
+
+
   content: string = 'increment page content';
 }

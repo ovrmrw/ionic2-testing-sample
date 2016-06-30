@@ -1,11 +1,21 @@
-import {Component} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import { HomeService } from './home.service';
 
 @Component({
-  templateUrl: 'build/pages/home/home.html'
+  // templateUrl: 'build/pages/home/home.html',
+  template: require('./home.html'),
+  providers: [HomeService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomePage {
-  constructor(private navController: NavController) {
-  
-  }
+export class HomePage implements OnInit {
+  constructor(
+    private service: HomeService,
+    private cd: ChangeDetectorRef,
+    private navController: NavController
+  ) { }
+
+  ngOnInit() { }
+
+  get userName() { return this.service.userName$; }
 }

@@ -1,29 +1,21 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {Facebook} from './../../services/facebook';
-import {TabsPage} from './../tabs/tabs';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { SignupService } from './signup.service';
 
 @Component({
-  templateUrl: 'build/pages/signup/signup.html',
-  providers: [Facebook]
+  // templateUrl: 'build/pages/signup/signup.html',
+  template: require('./signup.html'),
+  providers: [SignupService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignupPage {
-  // fb :any;
+export class SignupPage implements OnInit {
   constructor(
-    public nav: NavController,
-    private fb: Facebook
-  ) {
-    // this.fb = fb;
-  }
+    private service: SignupService,
+    private cd: ChangeDetectorRef
+  ) { }
+
+  ngOnInit() { }
 
   login() {
-    this.fb.login().then((response) => {
-      console.log(response);
-      if (response.status === 'connected') {
-        this.nav.setRoot(<any>TabsPage);
-      } else {
-        alert("can't using facebook login");
-      }
-    });
+    this.service.login();
   }
 }

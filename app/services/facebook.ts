@@ -4,8 +4,8 @@ import './fbsdk.ts';
 
 declare var cordova: any;
 
-// プロジェクトルートにあるfacebook.secret.jsonからappIdを取得する。
-const appId: string = require('../../facebook.secret.json').appId || '';
+// configフォルダにあるfacebook.jsonからappIdを取得する。
+const appId: string = require('../../config/facebook.json').appId || '';
 console.log('Facebook AppId: ' + appId);
 
 
@@ -21,6 +21,7 @@ export class Facebook {
                         // xfbml: false
                         // version: 'v2.5'
                         appId: appId,
+                        status: true,
                         xfbml: true,
                         version: 'v2.6'
                     }
@@ -31,7 +32,6 @@ export class Facebook {
                 if (d.getElementById(id)) { return; }
                 js = d.createElement(s); js.id = id;
                 js.src = "//connect.facebook.net/en_US/sdk.js";
-                //js.src = "//connect.facebook.net/en_US/sdk/debug.js";
                 fjs.parentNode.insertBefore(js, fjs);
             } (document, 'script', 'facebook-jssdk'));
         }
