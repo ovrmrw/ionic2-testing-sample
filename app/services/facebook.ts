@@ -2,53 +2,58 @@ import {Injectable} from '@angular/core';
 import {Facebook as ngFacebook} from 'ionic-native';
 import './fbsdk.ts';
 
-declare var cordova:any;
+declare var cordova: any;
+
+// プロジェクトルートにあるfacebook.secret.jsonからappIdを取得する。
+const appId: string = require('../../facebook.secret.json').appId || '';
+console.log('Facebook AppId: ' + appId);
+
 
 @Injectable()
-export class Facebook
-{
-    constructor()
-    {
+export class Facebook {
+    constructor() {
         // only browser
         if (typeof cordova === "undefined") {
             (<any>window).fbAsyncInit = function () {
                 FB.init(
                     {
-                        appId: '【input your facebook appID】',
-                        xfbml: false,
-                        version: 'v2.5'
+                        // appId: '【input your facebook appID】',
+                        // xfbml: false
+                        // version: 'v2.5'
+                        appId: appId,
+                        xfbml: true,
+                        version: 'v2.6'
                     }
                 );
             };
-            (function(d, s, id){
+            (function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
+                if (d.getElementById(id)) { return; }
                 js = d.createElement(s); js.id = id;
                 js.src = "//connect.facebook.net/en_US/sdk.js";
                 //js.src = "//connect.facebook.net/en_US/sdk/debug.js";
                 fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
+            } (document, 'script', 'facebook-jssdk'));
         }
     }
 
-    login()
-    {
-        return new Promise(function(resolve, reject) {
+    login(): Promise<fb.AuthResponse> {
+        return new Promise<fb.AuthResponse>(function (resolve, reject) {
             if (typeof cordova === "undefined") {
-                if( navigator.userAgent.match('CriOS') ){
+                if (navigator.userAgent.match('CriOS')) {
                     alert("don't work chrome for iOS.you should use safari.");
                 } else {
                     console.log("start login");
                     FB.login(
-                        function(response) {
+                        function (response) {
                             console.log("login is resolve");
                             resolve(response);
                         },
-                        {scope:'public_profile,user_friends,email'});
+                        { scope: 'public_profile,user_friends,email' });
                 }
             } else {
                 // using native
-                ngFacebook.login(['email','public_profile','user_friends']).then(
+                ngFacebook.login(['email', 'public_profile', 'user_friends']).then(
                     (response) => {
                         resolve(response);
                     },

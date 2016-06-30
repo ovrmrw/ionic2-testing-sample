@@ -11,7 +11,7 @@ import { IncrementService } from './increment.service';
 })
 export class IncrementPage implements OnInit {
   constructor(
-    private navController: NavController,
+    private nav: NavController,
     private cd: ChangeDetectorRef,
     private service: IncrementService
   ) { }
@@ -30,7 +30,7 @@ export class IncrementPage implements OnInit {
       position: position
     });
 
-    this.navController.present(toast);
+    this.nav.present(toast);
   }
 
 

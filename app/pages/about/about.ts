@@ -8,7 +8,7 @@ import {NavController} from 'ionic-angular';
 })
 export class AboutPage implements OnInit {
   constructor(
-    private navController: NavController,
+    private nav: NavController,
     private cd: ChangeDetectorRef
   ) { }
 

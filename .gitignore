@@ -52,3 +52,4 @@ reports
 .awcache
 screenshots
 .idea/
+*.secret.json
