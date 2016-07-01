@@ -4,7 +4,7 @@
   "description": "Testing ionic2: An Ionic project",
   "main": "index.js",
   "scripts": {
-    "postinstall": "typings install",
+    "typings": "typings install",
     "build:test": "webpack --config test/webpack.config.test.js",
     "build:test:w": "webpack --config test/webpack.config.test.js --watch",
     "karma": "npm run build:test && karma start --single-run",

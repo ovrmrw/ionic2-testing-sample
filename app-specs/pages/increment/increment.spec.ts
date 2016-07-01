@@ -4,19 +4,24 @@
 /* >>> boilerplate */
 import assert from 'power-assert';
 import lodash from 'lodash';
-import { beforeEach, afterEach, inject, async, fakeAsync, tick, addProviders, TestComponentBuilder, ComponentFixture } from '@angular/core/testing';
+import { inject, async, fakeAsync, tick, addProviders, TestComponentBuilder, ComponentFixture } from '@angular/core/testing';
 // import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, elements, elementText } from '../../../test';
 import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } from '../../../test';
 /* <<< boilerplate */
 
 import { NavController } from 'ionic-angular';
-import { Store } from '../../../app/store';
+import { Store, UserInfo } from '../../../app/store';
 import { IncrementPage } from '../../../app/pages/increment/increment';
 import { Observable } from 'rxjs/Rx';
 
 
 class MockStore {
-  userName$ = Observable.of('Test User');
+  private userInfo: UserInfo = {
+    userId: '',
+    name: 'Test User',
+    accessToken: ''
+  };
+  userInfo$ = Observable.of(this.userInfo);
 }
 
 
@@ -51,7 +56,7 @@ describe('TEST: IncrementPage Component', () => {
     builder.createAsync(IncrementPage).then(f => fixture = f);
     tick();
     const el = fixture.nativeElement as HTMLElement;
-    fixture.detectChanges();    
+    fixture.detectChanges();
     assert(elementText(el, '#username').trim() === 'Test User');
   }));
 

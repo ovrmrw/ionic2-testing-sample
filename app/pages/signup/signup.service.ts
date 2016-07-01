@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { Facebook } from '../../services/facebook';
 import { TabsPage } from './../tabs/tabs';
 import { Store, UserInfo } from '../../store';
+import { Facebook as ngFacebook } from 'ionic-native';
+import '../../services/fbsdk';
 
 @Injectable()
 export class SignupService {
@@ -11,6 +13,16 @@ export class SignupService {
     private fb: Facebook,
     private store: Store
   ) { }
+
+
+  getLoginStatus() {
+    return new Promise<string>((resolve, reject) => {
+      FB.getLoginStatus(response => {
+        console.log('status before login: ' + response.status);
+        resolve(response.status);
+      });
+    });
+  }
 
 
   login() {

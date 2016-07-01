@@ -4,7 +4,7 @@
 /* >>> boilerplate */
 import assert from 'power-assert';
 import lodash from 'lodash';
-import { beforeEach, afterEach, inject, async, fakeAsync, tick, addProviders, TestComponentBuilder, ComponentFixture } from '@angular/core/testing';
+import { inject, async, fakeAsync, tick, addProviders, TestComponentBuilder, ComponentFixture } from '@angular/core/testing';
 // import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, elements, elementText } from '../../../test';
 import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } from '../../../test';
 /* <<< boilerplate */
@@ -41,7 +41,7 @@ describe('TEST: AboutPage Component', () => {
     let fixture: ComponentFixture<AboutPage>;
     builder.createAsync(AboutPage).then(f => fixture = f);
     tick();
-    const el = fixture.debugElement.nativeElement as HTMLElement;
+    const el = fixture.nativeElement as HTMLElement;
     const TEXTS = 'ion-content ion-list ion-item';
 
     fixture.detectChanges();

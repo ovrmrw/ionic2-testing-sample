@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { SignupService } from './signup.service';
 
 @Component({
@@ -10,12 +10,22 @@ import { SignupService } from './signup.service';
 export class SignupPage implements OnInit {
   constructor(
     private service: SignupService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private el: ElementRef
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
+
 
   login() {
-    this.service.login();
+    (async () => {
+      this.loginStatus = await this.service.getLoginStatus();
+      this.cd.markForCheck();
+      this.service.login();
+    })();
   }
+
+
+  loginStatus: string;
 }
