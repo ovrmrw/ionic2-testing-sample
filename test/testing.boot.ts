@@ -9,7 +9,7 @@ import 'zone.js/dist/long-stack-trace-zone';
 try {
   require('zone.js/dist/jasmine-patch');
 } catch (e) { 
-  console.log('"zone.js/dist/jasmine-patch" can\'t be loaded because Framework is not Jasmine.');
+  console.log('"zone.js/dist/jasmine-patch" is not loaded because Framework is not Jasmine but (maybe) Mocha.');
 }
 import 'zone.js/dist/async-test'; // asyncテストに必要
 import 'zone.js/dist/fake-async-test'; // fakeAsyncテストに必要

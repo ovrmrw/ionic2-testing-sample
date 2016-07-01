@@ -12,7 +12,7 @@ export class HomePage implements OnInit {
   constructor(
     private service: HomeService,
     private cd: ChangeDetectorRef,
-    private navController: NavController
+    private nav: NavController
   ) { }
 
   ngOnInit() { }
