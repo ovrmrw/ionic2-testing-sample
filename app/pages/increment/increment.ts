@@ -34,8 +34,13 @@ export class IncrementPage implements OnInit {
   }
 
 
+  increment() { this.service.increment(); }
+  
+  decrement() { this.service.decrement(); }
+
+
   get userName() { return this.service.userName$; }
 
-
-  content: string = 'increment page content';
+  get counter() { return this.service.counter$; }
+  putCounter(data: number) { this.service.putCounter(data); }
 }

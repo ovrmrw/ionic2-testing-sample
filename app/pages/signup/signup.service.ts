@@ -47,9 +47,6 @@ export class SignupService {
           name: userRes.name,
           accessToken: accessToken
         };
-        console.group('UserInfo');
-        console.log(userInfo);
-        console.groupEnd();
         this.store.putUserInfo(userInfo);
       }
     })();

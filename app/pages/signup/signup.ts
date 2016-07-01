@@ -14,8 +14,7 @@ export class SignupPage implements OnInit {
     private el: ElementRef
   ) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 
   login() {

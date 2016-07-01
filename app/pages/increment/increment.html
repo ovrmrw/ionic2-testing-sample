@@ -5,6 +5,13 @@
 </ion-header>
 
 <ion-content>
-  <h2></h2>
+  <h2>Increment counter</h2>
+  
+  <h1 id="counter">{{counter | async}}</h1>
+  <button name="increment" (click)="increment()">+</button>
+  <button name="decrement" (click)="decrement()">-</button>
+
+  <hr />
+
   <div id="username">{{userName | async}}</div>
 </ion-content>

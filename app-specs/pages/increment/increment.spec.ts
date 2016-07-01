@@ -25,7 +25,7 @@ class MockStore {
 }
 
 
-describe('TEST: IncrementPage Component', () => {
+describe('TEST: IncrementPage Component 1', () => {
   /* >>> boilerplate */
   let builder: TestComponentBuilder;
   let store: Store;
@@ -60,10 +60,48 @@ describe('TEST: IncrementPage Component', () => {
     assert(elementText(el, '#username').trim() === 'Test User');
   }));
 
+});
 
-  // it('should have title', asyncPower(async () => {
-  //   const fixture = await builder.createAsync(IncrementPage);
-  //   const el = fixture.nativeElement as HTMLElement;
-  // }));
+
+
+describe('TEST: IncrementPage Component 2', () => {
+  /* >>> boilerplate */
+  let builder: TestComponentBuilder;
+  let store: Store;
+
+  beforeEach(() => {
+    addProviders([
+      Store,
+      { provide: NavController, useValue: {} }
+    ]);
+  });
+
+  beforeEach(inject([TestComponentBuilder], (tcb) => {
+    builder = tcb;
+  }));
+  /* <<< boilerplate */
+
+
+  it('should increment counter correctly', fakeAsyncPower(() => {
+    let fixture: ComponentFixture<IncrementPage>;
+    builder.createAsync(IncrementPage).then(f => fixture = f);
+    tick();
+    const el = fixture.nativeElement as HTMLElement;
+
+    fixture.detectChanges();
+    assert(elementText(el, '#counter').trim() === '0');
+
+    (<HTMLButtonElement>el.querySelector('button[name="increment"]')).click();
+    fixture.detectChanges();
+    assert(elementText(el, '#counter').trim() === '1');
+
+    (<HTMLButtonElement>el.querySelector('button[name="increment"]')).click();
+    fixture.detectChanges();
+    assert(elementText(el, '#counter').trim() === '2');
+
+    (<HTMLButtonElement>el.querySelector('button[name="decrement"]')).click();
+    fixture.detectChanges();
+    assert(elementText(el, '#counter').trim() === '1');
+  }));
 
 });
