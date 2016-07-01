@@ -3,19 +3,9 @@ Testing ionic2
 
 ---
 
+Angular2 rc.4 compatible.
+
 ###Setup
-Edit l17 in "app/services/facebook.ts".
-
-```
-FB.init(
-    {
-        appId: '【input your facebook appID】',
-        xfbml: false,
-        version: 'v2.5'
-    }
-);
-```
-
 ```
 $ npm install
 ```
@@ -25,7 +15,7 @@ $ npm install
 $ ionic serve
 ```
 
-###Angular2 Test (jasmine)
+###Angular2 Test (mocha)
 ```
 $ npm run karma
 or

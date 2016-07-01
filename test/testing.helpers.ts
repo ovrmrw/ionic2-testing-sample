@@ -38,8 +38,9 @@ export function withPower(functionMayHaveError: () => void): void {
     .fork({
       'name': 'withPower test',
       'onHandleError': function (parentZoneDelegate, currentZone, targetZone, error) {
-        const err = `Error in "${Zone.current.name} zone": `;
-        throw new Error(error.message ? err + error.message : err + error);
+        const whichZone = `Error in "${Zone.current.name} zone": `;
+        const message = (error.message ? `\n${whichZone}\n${error.message}` : `\n${whichZone}\n${error}`);
+        throw new Error(message);
       }
     })
     .runGuarded(() => {
@@ -48,24 +49,29 @@ export function withPower(functionMayHaveError: () => void): void {
 }
 
 
-export function asyncPower(asyncAwaitFunction: () => Promise<void>): Function {
+export function asyncPower(asyncAwaitFunction: () => Promise<void>): (done: any) => void {
   return function (done) {
     Zone.current
       .fork({
         'name': 'asyncPower test',
         'onHandleError': function (parentZoneDelegate, currentZone, targetZone, error) {
-          const err = `Error in "${Zone.current.name} zone": `;
-          done.fail(error.message ? err + error.message : err + error);
+          const whichZone = `Error in "${Zone.current.name} zone": `;
+          const message = (error.message ? `\n${whichZone}\n${error.message}` : `\n${whichZone}\n${error}`);
+          try {
+            done.fail(message); // jasmine
+          } catch (e) {
+            done(message); // mocha
+          }
         }
       })
       .runGuarded(() => {
-        asyncAwaitFunction.call(null).then(() => done());
+        asyncAwaitFunction.call(null).then(done);
       });
   }
 }
 
 
-export function fakeAsyncPower(functionWithTicks: () => void): Function {
+export function fakeAsyncPower(functionWithTicks: () => void): (done: any) => void {
   return function (done) {
     let FakeAsyncTestZoneSpec = Zone['FakeAsyncTestZoneSpec'];
     let testZoneSpec = new FakeAsyncTestZoneSpec();
@@ -74,8 +80,13 @@ export function fakeAsyncPower(functionWithTicks: () => void): Function {
       .fork({
         'name': 'fakeAsyncPower test',
         'onHandleError': function (parentZoneDelegate, currentZone, targetZone, error) {
-          const err = `Error in "${Zone.current.name} zone": `;
-          done.fail(error.message ? err + error.message : err + error);
+          const whichZone = `Error in "${Zone.current.name} zone": `;
+          const message = (error.message ? `\n${whichZone}\n${error.message}` : `\n${whichZone}\n${error}`);
+          try {
+            done.fail(message); // jasmine
+          } catch (e) {
+            done(message); // mocha
+          }
         }
       })
       .runGuarded(() => {

@@ -1,28 +1,29 @@
-import { AboutPage } from '../../../app/pages/about/about';
-import { NavController } from 'ionic-angular';
-
-
 /**
  *  ===== testing world =====
  */
 /* >>> boilerplate */
 import assert from 'power-assert';
 import lodash from 'lodash';
-import { describe, it, iit, xit, beforeEach, beforeEachProviders, afterEach, inject } from '@angular/core/testing';
-import { TestComponentBuilder, ComponentFixture } from '@angular/compiler/testing';
-import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, elements, elementText } from '../../../test';
+import { beforeEach, afterEach, inject, async, fakeAsync, tick, addProviders, TestComponentBuilder, ComponentFixture } from '@angular/core/testing';
+// import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, elements, elementText } from '../../../test';
+import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } from '../../../test';
 /* <<< boilerplate */
+
+import { NavController } from 'ionic-angular';
+import { AboutPage } from '../../../app/pages/about/about';
 
 
 describe('TEST: AboutPage Component', () => {
   /* >>> boilerplate */
   let builder: TestComponentBuilder;
 
-  beforeEachProviders(() => [
-    { provide: NavController, useValue: {} }
-  ]);
+  beforeEach(() => {
+    addProviders([
+      { provide: NavController, useValue: {} }
+    ]);
+  });
 
-  beforeEach(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+  beforeEach(inject([TestComponentBuilder], (tcb) => {
     builder = tcb;
   }));
   /* <<< boilerplate */
