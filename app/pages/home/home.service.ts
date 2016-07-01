@@ -7,6 +7,9 @@ export class HomeService {
     private store: Store
   ) { }
 
-  get userName$() { return this.store.userName$; }
+  get userName$() {
+    return this.store.userInfo$
+      .map(info => info.name);
+  }
 
 }

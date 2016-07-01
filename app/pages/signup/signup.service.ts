@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Facebook } from '../../services/facebook';
 import { TabsPage } from './../tabs/tabs';
-import { Store } from '../../store';
+import { Store, UserInfo } from '../../store';
 
 @Injectable()
 export class SignupService {
@@ -25,11 +25,20 @@ export class SignupService {
       }
 
       const userID = loginRes.authResponse.userID;
+      const accessToken = loginRes.authResponse.accessToken;
 
       const userRes = await promiseWrapper<User>((<any>FB).api.bind(null, userID));
       if (userRes && !userRes.error) {
         console.log(userRes);
-        this.store.putUserName(userRes.name);
+        const userInfo: UserInfo = {
+          userId: userID,
+          name: userRes.name,
+          accessToken: accessToken
+        };
+        console.group('UserInfo');
+        console.log(userInfo);
+        console.groupEnd();
+        this.store.putUserInfo(userInfo);
       }
     })();
     // return new Promise<fb.AuthResponse>((resolve, reject) => {

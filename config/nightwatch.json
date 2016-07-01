@@ -21,7 +21,7 @@
   },
   "parallel_process_delay": 0,
   "test_workers": {
-    "enabled": true,
+    "enabled": false,
     "workers": "auto"
   },
   "test_settings": {

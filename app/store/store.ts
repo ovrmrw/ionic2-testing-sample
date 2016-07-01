@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, ReplaySubject } from 'rxjs/Rx';
-
+import { UserInfo } from './types';
 
 @Injectable()
 export class Store {
-  private userNameSubject$ = new ReplaySubject<string>();
-  
-  userName$: Observable<string>;
+  private _userInfoSubject$ = new ReplaySubject<UserInfo>();
+  private _userInfo$: Observable<UserInfo>;
 
   constructor() {
-    this.userName$ = this.userNameSubject$.scan<string>((p, value) => {
+    this._userInfo$ = this._userInfoSubject$.scan<UserInfo>((p, value) => {
       return value;
     });
   }
 
 
-  putUserName(data: string) { this.userNameSubject$.next(data); }
+  get userInfo$() { return this._userInfo$; }
+  putUserInfo(data: UserInfo) { this._userInfoSubject$.next(data); }
 
 }
