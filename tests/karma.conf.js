@@ -16,7 +16,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './.bundles/webpack.bundle.spec.espowered.js'
+      './tests/.bundles/webpack.bundle.spec.espowered.js'
     ],
 
 

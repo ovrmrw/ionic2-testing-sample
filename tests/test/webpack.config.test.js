@@ -7,7 +7,7 @@ const atlQueryForTest = { // stands for 'awesome-typescript-loader query'
   useBabel: true,
   babelOptions: {
     presets: ['es2015'],
-    plugins: []
+    plugins: ['babel-plugin-espower'] // []
   },
   useCache: true,
 };
@@ -15,10 +15,10 @@ const atlQueryForTest = { // stands for 'awesome-typescript-loader query'
 
 module.exports = [
   {
-    entry: ['./test-rxjs/testing.rxjs.boot.js'],
+    entry: ['./tests/test/testing.boot.ts'],
     output: {
       path: '.bundles',
-      filename: 'webpack.bundle.spec.rxjs.js',
+      filename: 'webpack.bundle.spec.espowered.js',
     },
     resolve: {
       extensions: ['', '.ts', '.js']
@@ -35,14 +35,14 @@ module.exports = [
           loader: 'awesome-typescript-loader', // babel-loader!ts-loader と同じようなもの
           query: atlQueryForTest
         },
-        // {
-        //   test: /\.json$/,
-        //   loader: "json-loader"
-        // },
-        // {
-        //   test: /\.html$/,
-        //   loader: "html-loader"
-        // }
+        {
+          test: /\.json$/,
+          loader: "json-loader"
+        },
+        {
+          test: /\.html$/,
+          loader: "html-loader"
+        }
       ]
     },
     devtool: 'inline-source-map',

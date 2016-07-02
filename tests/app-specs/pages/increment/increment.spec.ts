@@ -10,8 +10,8 @@ import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } 
 /* <<< boilerplate */
 
 import { NavController } from 'ionic-angular';
-import { Store, UserInfo } from '../../../app/store';
-import { IncrementPage } from '../../../app/pages/increment/increment';
+import { Store, UserInfo } from '../../../../app/store';
+import { IncrementPage } from '../../../../app/pages/increment/increment';
 import { Observable } from 'rxjs/Rx';
 
 
