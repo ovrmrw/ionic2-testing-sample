@@ -12,7 +12,6 @@ const atlQueryForTest = { // stands for 'awesome-typescript-loader query'
   useCache: true,
 };
 
-
 module.exports = [
   {
     entry: ['./tests/test/testing.boot.ts'],
