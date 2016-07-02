@@ -1,6 +1,7 @@
 // declare var Error: any;
 // Error.stackTraceLimit = Infinity;
 
+/* >>> boilerplate */
 import 'es6-shim';
 import 'babel-polyfill';
 
@@ -23,6 +24,7 @@ import {
 
 resetBaseTestProviders();
 setBaseTestProviders(TEST_BROWSER_DYNAMIC_PLATFORM_PROVIDERS, TEST_BROWSER_DYNAMIC_APPLICATION_PROVIDERS);
+/* <<< boilerplate */
 
 
 import './specs.ref'; // テストしたいTSファイル

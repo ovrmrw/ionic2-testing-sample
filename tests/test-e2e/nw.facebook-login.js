@@ -23,8 +23,10 @@ module.exports = {
           this.waitForElementVisible('input[name="email"]', maxWait);
           this.setValue('input[name="email"]', 'hjgflpi_fallerwitz_1467366806@tfbnw.net');
           this.setValue('input[name="pass"]', 'testuser');
+
           this.click('input[name="login"]', function () {
             browser.switchWindow(main); // メインウインドウにswitchする。
+            
             this.waitForElementVisible('h2[name="welcome"]', maxWait);
             this.assert.containsText('h2[name="welcome"]', 'Welcome to Ionic');
           });
