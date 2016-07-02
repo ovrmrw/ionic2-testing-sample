@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '../../store';
 
+
 @Injectable()
 export class IncrementService {
   constructor(
@@ -22,6 +23,5 @@ export class IncrementService {
   }
 
   get counter$() { return this.store.counter$; }
-  putCounter(data: number) { this.store.putCounter(data); }
 
 }

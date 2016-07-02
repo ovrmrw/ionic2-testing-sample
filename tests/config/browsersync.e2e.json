@@ -1,6 +1,6 @@
 {
   "server": { "baseDir": "./www" },
-  "port": 9100,
+  "port": 8100,
   "open": false,
   "ui": false
 }

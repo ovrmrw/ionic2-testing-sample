@@ -16,7 +16,7 @@
     "ls:e2e": "lite-server --config tests/config/browsersync.e2e.json",
     "nightwatch": "concurrently -k \"gulp nightwatch\" ",
     "nightwatch:w": "concurrently -k \"gulp nightwatch:w\" ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run mocha:rxjs && npm run karma && gulp build && concurrently -k \"npm run ls:e2e\" \"npm run nightwatch\" "
   },
   "repository": {
     "type": "git",
@@ -97,5 +97,7 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ]
 }

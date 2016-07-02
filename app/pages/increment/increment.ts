@@ -3,6 +3,7 @@ import {NavController, Toast, } from 'ionic-angular';
 
 import { IncrementService } from './increment.service';
 
+
 @Component({
   // templateUrl: 'build/pages/home/home.html'
   template: require('./increment.html'),
@@ -42,5 +43,4 @@ export class IncrementPage implements OnInit {
   get userName() { return this.service.userName$; }
 
   get counter() { return this.service.counter$; }
-  putCounter(data: number) { this.service.putCounter(data); }
 }
