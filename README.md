@@ -23,7 +23,7 @@ or
 $ npm run karma:w
 ```
 
-###RxJS Mable Test (mocha)
+###RxJS Marble Test (mocha)
 ```
 $ npm run mocha:rxjs
 or

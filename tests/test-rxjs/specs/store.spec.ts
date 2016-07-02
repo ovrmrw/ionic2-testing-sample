@@ -4,8 +4,9 @@ import chai from 'chai';
 const assert = chai.assert;
 /* <<< boilerplate */
 
+import { incrementObservable } from '../targets.ref';
 
-describe('Observable', () => {
+describe('TEST: Store', () => {
   /* >>> boilerplate */
   let ts: TestScheduler;
   let hot: typeof TestScheduler.prototype.createHotObservable;
@@ -19,25 +20,13 @@ describe('Observable', () => {
   /* <<< boilerplate */
 
 
-  it('should return correct observable', () => {
-    const source$ = cold<number>('-a-b-c', { a: 1, b: 2, c: 3 });
-    const marbles = '---b-c';
-    const values = { a: 10, b: 20, c: 30 };
-    const test$ = mapFilterTest(source$);
+  it('"incrementObservable" should return correct observable', () => {
+    const source$ = hot<number>('---^a-b-c-d-e', { a: 0, b: 1, c: 1, d: 2, e: -1 });
+    const marbles = '-a-b-c-d-e';
+    const values = { a: 0, b: 1, c: 2, d: 4, e: 3 };
+    const test$ = incrementObservable(source$, true);
     ts.expectObservable(test$).toBe(marbles, values);
     ts.flush();
   });
 
-
-  it('should pass', () => {
-    assert(1 + 1 === 2);
-  });
-
 });
-
-
-function mapFilterTest(observable: Observable<number>): Observable<number> {
-  return observable
-    .map(value => value * 10)
-    .filter(value => value > 10);
-}

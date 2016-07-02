@@ -17,7 +17,7 @@ module.exports = [
   {
     entry: ['./tests/test-rxjs/testing.rxjs.boot.js'],
     output: {
-      path: '.bundles',
+      path: './tests/.bundles',
       filename: 'webpack.bundle.spec.rxjs.js',
     },
     resolve: {

@@ -1,16 +1,12 @@
-/**
- *  ===== testing world =====
- */
 /* >>> boilerplate */
 import assert from 'power-assert';
 import lodash from 'lodash';
 import { inject, async, fakeAsync, tick, addProviders, TestComponentBuilder, ComponentFixture } from '@angular/core/testing';
-// import { asyncPower, fakeAsyncPower, tick, withPower, setTimeoutPromise, elements, elementText } from '../../../test';
-import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } from '../../../test';
+import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } from '../../../../helpers';
 /* <<< boilerplate */
 
 import { NavController } from 'ionic-angular';
-import { AboutPage } from '../../../../app/pages/about/about';
+import { AboutPage } from '../../../targets.ref';
 
 
 describe('TEST: AboutPage Component', () => {

@@ -29,7 +29,7 @@ gulp.task('run:before', [shouldWatch ? 'watch' : 'build']);
  * build however you see fit.
  */
 // var buildBrowserify = require('ionic-gulp-browserify-typescript');
-var buildBrowserify = require('./tests/lib/ionic-gulp-browserify-typescript-babel');
+var buildBrowserify = require('./lib/ionic-gulp-browserify-typescript-babel');
 
 var buildSass = require('ionic-gulp-sass-build');
 var copyHTML = require('ionic-gulp-html-copy');
@@ -82,7 +82,7 @@ const mocha = require('gulp-mocha');
 const plumber = require('gulp-plumber');
 const nightwatch = require('gulp-nightwatch');
 
-const rxjsSpecJS = '{./,}.bundles/webpack.bundle.spec.rxjs.js';
+const rxjsSpecJS = '{./,}tests/.bundles/webpack.bundle.spec.rxjs.js';
 
 gulp.task('mocha:rxjs', [], () => {
   gulp.src(rxjsSpecJS)
@@ -109,5 +109,5 @@ gulp.task('nightwatch',() => {
 
 gulp.task('nightwatch:w', ['nightwatch'], () => {
   // gulp.watch(['{./,}app/**/*.{ts,html,scss}'], ['build']);
-  gulp.watch(['{./,}.bundles/**/*.js', '{./,}test-{e2e,nightwatch}/**/*.js'], ['nightwatch']);
+  gulp.watch(['{./,}www/build/**/*', '{./,}tests/test-{e2e,nightwatch}/**/*.js'], ['nightwatch']);
 });

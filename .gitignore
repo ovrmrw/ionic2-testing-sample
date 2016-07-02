@@ -53,3 +53,6 @@ reports
 screenshots
 .idea/
 *.secret.json
+tests/bundles
+tests/.bundles
+tests/.build
