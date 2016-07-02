@@ -18,4 +18,4 @@ module.exports = (function (settings) {
     settings.test_settings.default.desiredCapabilities['browserName'] = browserName;
   }
   return settings;
-})(require('./config/nightwatch.json'));
+})(require('./nightwatch.json'));
