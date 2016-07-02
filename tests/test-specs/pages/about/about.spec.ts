@@ -10,7 +10,7 @@ import { asyncPower, fakeAsyncPower, setTimeoutPromise, elements, elementText } 
 /* <<< boilerplate */
 
 import { NavController } from 'ionic-angular';
-import { AboutPage } from '../../../app/pages/about/about';
+import { AboutPage } from '../../../../app/pages/about/about';
 
 
 describe('TEST: AboutPage Component', () => {
