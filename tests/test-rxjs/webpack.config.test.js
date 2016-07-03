@@ -10,6 +10,7 @@ const atlQueryForTest = { // stands for 'awesome-typescript-loader query'
     plugins: []
   },
   useCache: true,
+  doTypeCheck: false
 };
 
 

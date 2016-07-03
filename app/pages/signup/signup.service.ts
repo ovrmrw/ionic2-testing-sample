@@ -24,7 +24,7 @@ export class SignupService {
           resolve(response.status);
         });
       } catch (e) {
-        alert(e);
+        console.error(e);
       }
     });
   }
@@ -56,7 +56,7 @@ export class SignupService {
           this.store.putUserInfo(userInfo);
         }
       } catch (e) {
-        alert(e);
+        console.error(e);
       }
     })();
   }

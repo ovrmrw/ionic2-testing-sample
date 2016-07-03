@@ -4,7 +4,6 @@ var maxWait = 5000;
 
 module.exports = {
   'Facebook Login TEST': function (browser) {
-    var self = this;
     browser
       .url('http://localhost:8100')
 
@@ -26,7 +25,7 @@ module.exports = {
 
           this.click('input[name="login"]', function () {
             browser.switchWindow(main); // メインウインドウにswitchする。
-            
+
             this.waitForElementVisible('h2[name="welcome"]', maxWait);
             this.assert.containsText('h2[name="welcome"]', 'Welcome to Ionic');
           });
