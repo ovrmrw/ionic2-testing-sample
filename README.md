@@ -73,7 +73,7 @@ $ ionic run android
 1. specs.ref.ts (./tests/test-ng2) (各テストファイルの読み込み)
 1. ./tests/test-ng2/app 以下のtsファイル (テストファイル)
 
-上記のうち、specs.ref.ts以外は変更する必要はありません。
+上記のうち、1～3は変更する必要はありません。
 
 テストファイルは ./tests/test-ng2/app 以下に作成し、specs.ref.tsに追記します。(追記しておかないとテストが走りません)
 
@@ -103,7 +103,7 @@ ng2はZone.jsライブラリによって生成されるZoneという空間の中
 1. specs.ref.ts (./tests/test-rxjs) (各テストファイルの読み込み)
 1. ./tests/test-rxjs/specs 以下のtsファイル (テストファイル)
 
-上記のうち、specs.ref.ts以外は変更する必要はありません。
+上記のうち、1～2は変更する必要はありません。
 
 テストファイルは ./tests/test-rxjs/specs 以下に作成し、specs.ref.tsに追記します。(追記しておかないとテストが走りません)
 
@@ -127,7 +127,7 @@ marble testに関しては[Writing Marble Tests](https://github.com/ReactiveX/rx
 1. nightwatch.json (./tests/config) (上記jsの中で読み込まれる)
 1. ./tests/test-e2e 以下のjsファイル (このフォルダにあるjsファイルは全てテストファイルとして読み込まれる)
 
-nightwatch.conf.jsとnightwatch.jsonは変更する必要はありません。
+上記のうち、1～2は変更する必要はありません。
 
 テストファイルは ./tests/test-e2e 以下にjsファイルとして作成します。(tsで書いても動きません)
 
