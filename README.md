@@ -93,7 +93,7 @@ Componentをテストする際は適宜Serviceのモックを挟む等の作法�
 ソースコードを読む順序は下記の通り。
 
 1. webpack.config.test.js (./tests/test-rxjs) (webpackの設定ファイル) (bundleが生成される)
-1. boot.js (./tests/test-rxjs) (rxj5 marble testのエントリーポイント)
+1. boot.js (./tests/test-rxjs) (rxjs5 marble testのエントリーポイント)
 1. specs.ref.ts (./tests/test-rxjs) (各テストファイルの読み込み)
 
 上記のうち、specs.ref.ts以外は変更する必要はありません。
@@ -103,8 +103,9 @@ Componentをテストする際は適宜Serviceのモックを挟む等の作法�
 (解説)
 
 ng2はrxjsをフル活用していますので、我々ユーザーもrxjsの波に乗ってしまった方が賢明です。  
-大体はユニットテストでもカバーできますが、複雑なObservableチェーンを組み上げるとき等、rxjsはそれだけでテストした方が良いケースもあります。  
-特にtimer系のoperatorを組み込むとng2のユニットテストではことごとくテストしにくくなるので、早い段階でmarble testに慣れましょう。
+大体はユニットテストでもカバーできますが、複雑なObservableチェーンを組み上げるとき等、rxjsはそれだけでテストした方が良いケースもあります。 
+
+特にtimer系のoperatorを組み込むとng2のユニットテストではことごとくテストしにくくなるので、早い段階でmarble testに慣れましょう。慣れておいた方がいいです。悪いことは言わない。
 
 marble testに関しては[Writing Marble Tests](https://github.com/ReactiveX/rxjs/blob/master/doc/writing-marble-tests.md)と
 [RxJS(5.x)で行うテストファーストな機能開発](http://blog.mmmcorp.co.jp/blog/2016/06/25/testing-rxjs-5/)が詳しいです。
@@ -116,7 +117,7 @@ marble testに関しては[Writing Marble Tests](https://github.com/ReactiveX/rx
 ソースコードを読む順序は下記の通り。
 
 1. nightwatch.conf.js (./tests) 
-1. nightwatch.json (./tests/config) (上記のjsの中で読み込まれる)
+1. nightwatch.json (./tests/config) (上記jsの中で読み込まれる)
 1. ./tests/test-e2e 以下のjsファイル (このフォルダにあるjsファイルは全てテストファイルとして読み込まれる)
 
 テストファイルは ./tests/test-e2e 以下に作成します。
@@ -127,5 +128,7 @@ AngularならそこはProtractorだろうと言われてしまうと思います
 「Angular2 Protractor」でググっても全然情報が出てこなくて困った僕は代替案としてNightwatchを使い始めたのですが、まあこれも悪くはないんじゃないかと最近では思っています。
 
 もしng2を使わなくなったとしてもNightwatchの知見は他にもそのまま生かせそうですしね。
+
+今回のサンプルでいうとFacebookログインの部分なんかはe2eの守備範囲かと思います。
 
 何か調べるときは公式[Nightwatch.js](http://nightwatchjs.org/)が一番早いでしょう。
