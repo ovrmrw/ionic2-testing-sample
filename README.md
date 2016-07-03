@@ -20,7 +20,7 @@ $ ionic serve
 
 ---
 
-### Angular2 test (mocha or jasmine) (bundler: webpack)
+### Angular2 unite test (mocha or jasmine) (bundler: webpack)
 ```
 $ npm run karma
 or
@@ -66,6 +66,7 @@ $ ionic run android
 ### Angular2 unit test (./tests/test-ng2)
 
 ソースコードを読む順序は下記の通り。
+
 1. karma.conf.js (./tests) (karmaの設定ファイル)
 1. webpack.config.test.js (./tests/test-ng2) (webpackの設定ファイル) (bundleが生成される)
 1. boot.ts (./tests/test-ng2) (Angular2 unit testのエントリーポイント)
@@ -90,6 +91,7 @@ Componentをテストする際は適宜Serviceのモックを挟む等の作法�
 ### rxjs5 marble test (./tests/test-rxjs)
 
 ソースコードを読む順序は下記の通り。
+
 1. webpack.config.test.js (./tests/test-rxjs) (webpackの設定ファイル) (bundleが生成される)
 1. boot.ts (./tests/test-rxjs) (rxj5 marble testのエントリーポイント)
 1. specs.ref.ts (./tests/test-rxjs) (各テストファイルの読み込み)
@@ -112,6 +114,7 @@ marble testに関しては[Writing Marble Tests](https://github.com/ReactiveX/rx
 ### e2e test (./tests/test-e2e)
 
 ソースコードを読む順序は下記の通り。
+
 1. nightwatch.conf.js (./tests) 
 1. nightwatch.json (./tests/config) (上記のjsの中で読み込まれる)
 1. ./tests/test-e2e 以下のjsファイル (このフォルダにあるjsファイルは全てテストファイルとして読み込まれる)
