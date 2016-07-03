@@ -71,6 +71,7 @@ $ ionic run android
 1. webpack.config.test.js (./tests/test-ng2) (webpackの設定ファイル) (bundleが生成される)
 1. boot.ts (./tests/test-ng2) (Angular2 unit testのエントリーポイント)
 1. specs.ref.ts (./tests/test-ng2) (各テストファイルの読み込み)
+1. ./tests/test-ng2/app 以下のtsファイル (テストファイル)
 
 上記のうち、specs.ref.ts以外は変更する必要はありません。
 
@@ -100,6 +101,7 @@ ng2はZone.jsライブラリによって生成されるZoneという空間の中
 1. webpack.config.test.js (./tests/test-rxjs) (webpackの設定ファイル) (bundleが生成される)
 1. boot.js (./tests/test-rxjs) (rxjs5 marble testのエントリーポイント)
 1. specs.ref.ts (./tests/test-rxjs) (各テストファイルの読み込み)
+1. ./tests/test-rxjs/specs 以下のtsファイル (テストファイル)
 
 上記のうち、specs.ref.ts以外は変更する必要はありません。
 
@@ -160,3 +162,11 @@ AngularならそこはProtractorだろうと言われてしまうと思います
 
 1. ionic2 [driftyco/ionic](https://github.com/driftyco/ionic)
 1. ionic-native [driftyco/ionic-native](https://github.com/driftyco/ionic-native)
+
+他にもバンドル系、webpackやbrowserifyなんかもソースコードを読むようにしておくと色々便利です。  
+今回のサンプルではbrowserifyのバンドル工程を一部改造してasync/awaitを使えるようにしてあります。
+browserifyは初めて触ったので少々手間取りましたが、そういうのもソースコードを読むということをしないと中々難しいかと思います。
+
+ng2 unit test用のwebpackでは ts -> js(es2015) -> js(es5) -> espower という多段変換をすることで、
+power-assertによるエラー補足時にtsファイルの正確な行数まで確認できるようになっています。  
+特にテスト初心者はpower-assertから受ける恩恵は大きいと思いますので、こういう技も覚えておくといいですね。
