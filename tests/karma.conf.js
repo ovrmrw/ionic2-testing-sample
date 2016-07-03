@@ -1,7 +1,6 @@
 'use strict';
-// Karma configuration
-// Generated on Fri Mar 25 2016 00:06:13 GMT+0900 (JST)
 
+/* >>> boilerplate */
 module.exports = function (config) {
   config.set({
 
@@ -83,3 +82,4 @@ module.exports = function (config) {
     // restartOnFileChange: true,
   })
 }
+/* <<< boilerplate */

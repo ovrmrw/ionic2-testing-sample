@@ -11,12 +11,11 @@ dependencies:
 
 test:
   override:
-    - echo "do nothing"
+    - npm test
 
 deployment:
   development:
     branch: development
     commands:
-      - ionic platform add android
       - ionic build android
       - curl -F "file=@platforms/android/build/outputs/apk/android-debug.apk" -F "token=$DEPLOYGATE_TOKEN" -F "message=sample" https://deploygate.com/api/users/$DEPLOYGATE_USER/apps
