@@ -17,16 +17,7 @@ export class SignupService {
 
 
   getLoginStatus() {
-    return new Promise<string>((resolve, reject) => {
-      try {
-        FB.getLoginStatus(response => {
-          console.log('status before login: ' + response.status);
-          resolve(response.status);
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    });
+    return this.fb.getLoginStatus().then(res => res.status);
   }
 
 
@@ -45,14 +36,8 @@ export class SignupService {
         const userID = loginRes.authResponse.userID;
         const accessToken = loginRes.authResponse.accessToken;
 
-        const userRes = await promiseWrapper<User>((<any>FB).api.bind(null, userID));
-        if (userRes && !userRes.error) {
-          console.log(userRes);
-          const userInfo: UserInfo = {
-            userId: userID,
-            name: userRes.name,
-            accessToken: accessToken
-          };
+        const userInfo = await this.fb.getUserInfo(userID, accessToken);
+        if (userInfo.name) {
           this.store.putUserInfo(userInfo);
         }
       } catch (e) {
