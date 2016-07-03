@@ -15,7 +15,7 @@ const atlQueryForTest = { // stands for 'awesome-typescript-loader query'
 
 
 module.exports = {
-  entry: ['./tests/test-rxjs/testing.rxjs.boot.js'],
+  entry: ['./tests/test-rxjs/boot.js'],
   output: {
     path: './tests/.bundles',
     filename: 'webpack.bundle.spec.rxjs.js',

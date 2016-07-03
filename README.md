@@ -16,6 +16,8 @@ $ npm run typings
 $ ionic serve
 ```
 
+---
+
 ###Angular2 test (mocha or jasmine) (bundler: webpack)
 ```
 $ npm run karma
@@ -43,3 +45,12 @@ In this case, you don't have to run 'ionic serve' in advance.
 ```
 $ npm test
 ```
+
+---
+
+###Debug app on android device
+Connect your android device to your PC via USB cable, then...
+```
+$ ionic state restore
+$ ionic run android
+``` 

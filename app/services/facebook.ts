@@ -1,11 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Facebook as ngFacebook} from 'ionic-native';
 import './fbsdk.ts';
+import { UserInfo } from '../store';
 
 declare var cordova: any;
 
-// configフォルダにあるfacebook.jsonからappIdを取得する。
-const appId: string = require('../../config/facebook.json').appId || '';
+// package.jsonのcordovaPluginsからappIdを取得する。
+const cordovaPlugins: any[] = require('../../package.json').cordovaPlugins;
+const appId: string = cordovaPlugins
+  .filter(plugin => plugin.id && plugin.id === 'cordova-plugin-facebook4')
+  .filter(plugin => plugin.variables && plugin.variables.APP_ID)
+  .map(plugin => plugin.variables.APP_ID as string)[0] || '';
 console.log('Facebook AppId: ' + appId);
 
 
@@ -31,10 +36,11 @@ export class Facebook {
         if (d.getElementById(id)) { return; }
         js = d.createElement(s); js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);  
+        fjs.parentNode.insertBefore(js, fjs);
       } (document, 'script', 'facebook-jssdk'));
     }
   }
+
 
   login(): Promise<fb.AuthResponse> {
     return new Promise<fb.AuthResponse>(function (resolve, reject) {
@@ -62,6 +68,63 @@ export class Facebook {
         );
       }
     });
+  }
+
+
+  getLoginStatus(): Promise<fb.AuthResponse> {
+    return new Promise<fb.AuthResponse>((resolve, reject) => {
+      if (typeof cordova === 'undefined') {
+        FB.getLoginStatus(response => {
+          if (response && !response['error']) {
+            console.log('status before login: ' + response.status);
+            resolve(response);
+          } else {
+            reject(response);
+          }
+        });
+      } else { // cordova
+        ngFacebook.getLoginStatus()
+          .then(response => {
+            resolve(response);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      }
+    })
+  }
+
+
+  getUserInfo(userId: string, accessToken: string): Promise<UserInfo> {
+    return new Promise<UserInfo>((resolve, reject) => {
+      if (typeof cordova === 'undefined') {
+        (<any>FB).api(userId, response => {
+          if (response && !response.error) {
+            const userInfo: UserInfo = {
+              userId: userId,
+              name: response.name,
+              accessToken: accessToken
+            };
+            resolve(userInfo);
+          } else {
+            reject(response);
+          }
+        });
+      } else { // cordova
+        ngFacebook.api(userId, [])
+          .then(response => {
+            const userInfo: UserInfo = {
+              userId: userId,
+              name: response.name,
+              accessToken: accessToken
+            };
+            resolve(userInfo);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      }
+    })
   }
 
 }
