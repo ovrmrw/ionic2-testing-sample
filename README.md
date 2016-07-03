@@ -31,6 +31,7 @@ $ npm run mocha:rxjs:w
 ```
 
 ###e2e test (nightwatch)
+Make sure that 'ionic serve' is running in advance.
 ```
 $ npm run nightwatch
 or
@@ -38,6 +39,7 @@ $ npm run nightwatch:w
 ```
 
 ###Kick all above tests with one shot (rxjs test -> ng2 test -> e2e test)
+In this case, you don't have to run 'ionic serve' in advance.
 ```
 $ npm test
 ```
