@@ -21,8 +21,8 @@ describe('TEST: rxjs5 basics', () => {
 
   it('should return correct observable', () => {
     const source$ = cold<number>('-a-b-c', { a: 1, b: 2, c: 3 });
-    const marbles = '---b-c';
-    const values = { a: 10, b: 20, c: 30 };
+    const marbles = '---B-C';
+    const values = { A: 10, B: 20, C: 30 };
     const test$ = mapFilterTest(source$);
     ts.expectObservable(test$).toBe(marbles, values);
     ts.flush();

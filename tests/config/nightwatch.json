@@ -19,9 +19,9 @@
       "webdriver.ie.driver": ""
     }
   },
-  "parallel_process_delay": 0,
+  "parallel_process_delay": 10,
   "test_workers": {
-    "enabled": true,
+    "enabled": false,
     "workers": "auto"
   },
   "test_settings": {

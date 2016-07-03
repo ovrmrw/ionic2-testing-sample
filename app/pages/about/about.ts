@@ -17,7 +17,7 @@ export class AboutPage implements OnInit {
     this.showTextsAsync();
   }
 
-  ionViewLoaded() { }
+  ionViewLoaded() {  }
 
 
   showTextsAsync() {

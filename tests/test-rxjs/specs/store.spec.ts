@@ -21,9 +21,9 @@ describe('TEST: Store', () => {
 
 
   it('"incrementObservable" should return correct observable', () => {
-    const source$ = hot<number>('---^a-b-c-d-e', { a: 0, b: 1, c: 1, d: 2, e: -1 });
-    const marbles = '-a-b-c-d-e';
-    const values = { a: 0, b: 1, c: 2, d: 4, e: 3 };
+    const source$ = hot<number>('---^a-b-c---d--e', { a: 0, b: 1, c: 1, d: 2, e: -1 });
+    const marbles = '-A-B-C---D--E';
+    const values = { A: 0, B: 1, C: 2, D: 4, E: 3 };
     const test$ = incrementObservable(source$, true);
     ts.expectObservable(test$).toBe(marbles, values);
     ts.flush();

@@ -42,7 +42,7 @@ or
 $ npm run nightwatch:w
 ```
 
-### Kick all above tests with one shot (rxjs test -> ng2 test -> e2e test)
+### Kick all above tests with one shot! (rxjs test -> ng2 test -> e2e test)
 In this case, you don't have to run 'ionic serve' in advance.
 ```
 $ npm test
@@ -50,7 +50,7 @@ $ npm test
 
 ---
 
-### Debug app on android device
+### Debug app on android devices
 Connect your android device to your PC via USB cable, then...
 ```
 $ ionic state restore
@@ -84,7 +84,12 @@ Componentをテストする際は適宜Serviceのモックを挟む等の作法�
 
 サンプルの中ではView-Component-Service-Storeの貫通テストも書いていますが、僕自身はテストを書き始めて1か月くらいの初心者なので作法としては鵜呑みにしないでください。
 
-ユニットテストについて調べたければ[juliemr/ng2-test-seed](https://github.com/juliemr/ng2-test-seed)を読むのが一番早いかと思います。
+ng2はZone.jsライブラリによって生成されるZoneという空間の中で実行されます。  
+このZoneはsetTimeoutやsetInterval等の関数をフックしているので、通常のfake timer系のライブラリは動きません。(jasmine.clock, sinon, lolex等)  
+そういうケースのためにfakeAsyncという関数が@angular/core/testingに用意されています。
+
+ユニットテストについて調べたければ[juliemr/ng2-test-seed](https://github.com/juliemr/ng2-test-seed)を読むのが一番早いかと思います。  
+後々のために[angular/zone.js](https://github.com/angular/zone.js/)も把握しておくと良いでしょう。なにせng2はZoneの上で動いていますから。
 
 ---
 
@@ -120,7 +125,11 @@ marble testに関しては[Writing Marble Tests](https://github.com/ReactiveX/rx
 1. nightwatch.json (./tests/config) (上記jsの中で読み込まれる)
 1. ./tests/test-e2e 以下のjsファイル (このフォルダにあるjsファイルは全てテストファイルとして読み込まれる)
 
-テストファイルは ./tests/test-e2e 以下に作成します。
+nightwatch.conf.jsとnightwatch.jsonは変更する必要はありません。
+
+テストファイルは ./tests/test-e2e 以下にjsファイルとして作成します。(tsで書いても動きません)
+
+実行時はlocalhost:8100を見に行くので、8100番ポートで別のアプリが既に動いていたりすると当然エラーになります。
 
 (解説)
 
@@ -129,6 +138,25 @@ AngularならそこはProtractorだろうと言われてしまうと思います
 
 もしng2を使わなくなったとしてもNightwatchの知見は他にもそのまま生かせそうですしね。
 
-今回のサンプルでいうとFacebookログインの部分なんかはe2eの守備範囲かと思います。
+今回のサンプルでいうとFacebookログインの部分なんかはe2eの守備範囲かと思います。  
+サンプルではログイン後、カウンターをincrementしたりdecrementしたりしていますが、ユーザーの操作をプログラム的に再現できるので色々応用できそうです。
 
 何か調べるときは公式[Nightwatch.js](http://nightwatchjs.org/)が一番早いでしょう。
+
+---
+
+### 何か問題が起きたら...
+
+ソースコード読みましょう。(冗談ではなく)  
+ドキュメントやサンプルコードは話半分で読み、トラブル時はちょっとググってダメならソースコードをあたるのがイマドキのエンジニアです。
+
+(Angular2系)
+
+1. Angular2 [angular/angular](https://github.com/angular/angular)
+1. Zone.js [angular/zone.js](https://github.com/angular/zone.js/)
+1. rxjs5 [ReactiveX/rxjs](https://github.com/ReactiveX/rxjs)
+
+(ionic2系)
+
+1. ionic2 [driftyco/ionic](https://github.com/driftyco/ionic)
+1. ionic-native [driftyco/ionic-native](https://github.com/driftyco/ionic-native)
