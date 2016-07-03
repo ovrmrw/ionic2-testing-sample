@@ -93,7 +93,7 @@ Componentをテストする際は適宜Serviceのモックを挟む等の作法�
 ソースコードを読む順序は下記の通り。
 
 1. webpack.config.test.js (./tests/test-rxjs) (webpackの設定ファイル) (bundleが生成される)
-1. boot.ts (./tests/test-rxjs) (rxj5 marble testのエントリーポイント)
+1. boot.js (./tests/test-rxjs) (rxj5 marble testのエントリーポイント)
 1. specs.ref.ts (./tests/test-rxjs) (各テストファイルの読み込み)
 
 上記のうち、specs.ref.ts以外は変更する必要はありません。
