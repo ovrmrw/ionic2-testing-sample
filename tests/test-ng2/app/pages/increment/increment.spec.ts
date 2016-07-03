@@ -20,10 +20,9 @@ class MockStore {
 }
 
 
-describe('TEST: IncrementPage Component 1', () => {
+describe('TEST: IncrementPage Component (with MockStore)', () => {
   /* >>> boilerplate */
   let builder: TestComponentBuilder;
-  let store: Store;
 
   beforeEach(() => {
     addProviders([
@@ -46,7 +45,7 @@ describe('TEST: IncrementPage Component 1', () => {
   }));
 
 
-  it('can create, should have title', fakeAsyncPower(() => {
+  it('should have Facebook\'s usename', fakeAsyncPower(() => {
     let fixture: ComponentFixture<IncrementPage>;
     builder.createAsync(IncrementPage).then(f => fixture = f);
     tick();
@@ -59,10 +58,9 @@ describe('TEST: IncrementPage Component 1', () => {
 
 
 
-describe('TEST: IncrementPage Component 2', () => {
+describe('TEST: IncrementPage Component (with real Store)', () => {
   /* >>> boilerplate */
   let builder: TestComponentBuilder;
-  let store: Store;
 
   beforeEach(() => {
     addProviders([
@@ -77,7 +75,7 @@ describe('TEST: IncrementPage Component 2', () => {
   /* <<< boilerplate */
 
 
-  it('should increment counter correctly', fakeAsyncPower(() => {
+  it('should increment counter correctly (fakeAsyncPower ver.)', fakeAsyncPower(() => {
     let fixture: ComponentFixture<IncrementPage>;
     builder.createAsync(IncrementPage).then(f => fixture = f);
     tick();
@@ -91,12 +89,32 @@ describe('TEST: IncrementPage Component 2', () => {
     assert(elementText(el, '#counter').trim() === '1');
 
     (<HTMLButtonElement>el.querySelector('button[name="increment"]')).click();
+    (<HTMLButtonElement>el.querySelector('button[name="increment"]')).click();
     fixture.detectChanges();
-    assert(elementText(el, '#counter').trim() === '2');
+    assert(elementText(el, '#counter').trim() === '3');
 
     (<HTMLButtonElement>el.querySelector('button[name="decrement"]')).click();
     fixture.detectChanges();
-    assert(elementText(el, '#counter').trim() === '1');
+    assert(elementText(el, '#counter').trim() === '2');
   }));
+
+
+  it('should increment counter correctly without View testing (asyncPower ver.)', asyncPower(async () => {
+    const fixture = await builder.createAsync(IncrementPage);
+    const el = fixture.nativeElement as HTMLElement;
+    const component = fixture.componentRef.instance;
+
+    let counter: number;
+    component.counter.subscribe(value => counter = value);
+
+    component.increment(); // 1
+    component.increment(); // 2
+    component.increment(); // 3   
+    component.decrement(); // 2
+    
+    fixture.detectChanges();
+    assert(counter === 2);
+  }));
+
 
 });

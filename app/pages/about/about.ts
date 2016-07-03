@@ -1,6 +1,7 @@
 import {Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
+
 @Component({
   // templateUrl: 'build/pages/about/about.html',
   template: require('./about.html'),

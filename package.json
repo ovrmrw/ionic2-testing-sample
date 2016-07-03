@@ -14,9 +14,9 @@
     "mocha:rxjs": "npm run build:rxjs && gulp mocha:rxjs",
     "mocha:rxjs:w": "npm run build:rxjs && concurrently -k \"npm run build:rxjs:w\" \"gulp mocha:rxjs:w\" ",
     "ls:e2e": "lite-server --config tests/config/browsersync.e2e.json",
-    "nightwatch": "concurrently -k \"gulp nightwatch\" ",
-    "nightwatch:w": "concurrently -k \"gulp nightwatch:w\" ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nightwatch": "concurrently -k \"npm run ls:e2e\" \"gulp nightwatch\" ",
+    "nightwatch:w": "concurrently -k \"npm run ls:e2e\" \"gulp nightwatch:w\" ",
+    "test": "npm run mocha:rxjs && npm run karma && gulp build && concurrently -k \"npm run ls:e2e\" \"npm run nightwatch\" "
   },
   "repository": {
     "type": "git",
@@ -95,7 +95,27 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    {
+      "id": "cordova-plugin-facebook4",
+      "locator": "cordova-plugin-facebook4",
+      "variables": {
+        "APP_ID": "1152676561421093",
+        "APP_NAME": "ionic2-testing-sample"
+      }
+    },
+    "cordova-plugin-inappbrowser"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    },
+    {
+      "platform": "ios",
+      "version": "",
+      "locator": "ios"
+    }
+  ]
 }
