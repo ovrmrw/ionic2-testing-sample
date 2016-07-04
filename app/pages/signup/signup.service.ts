@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Facebook } from '../../services/facebook';
+import { Facebook } from '../../providers/facebook';
 import { TabsPage } from './../tabs/tabs';
 import { Store, UserInfo } from '../../store';
-import { Facebook as ngFacebook } from 'ionic-native';
-import '../../services/fbsdk';
 
 
 @Injectable()

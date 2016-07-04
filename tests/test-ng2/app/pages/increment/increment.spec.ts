@@ -45,7 +45,7 @@ describe('TEST: IncrementPage Component (with MockStore)', () => {
   }));
 
 
-  it('should have Facebook\'s usename', fakeAsyncPower(() => {
+  it('should have Facebook\'s username', fakeAsyncPower(() => {
     let fixture: ComponentFixture<IncrementPage>;
     builder.createAsync(IncrementPage).then(f => fixture = f);
     tick();

@@ -4,12 +4,12 @@ import {StatusBar} from 'ionic-native';
 // import {TabsPage} from './pages/tabs/tabs';
 import {SignupPage} from './pages/signup/signup';
 import { Store } from './store';
-import { Facebook } from './services/facebook';
+import { Facebook } from './providers/facebook';
 
 
 @Component({
   template: '<ion-nav [root]="rootPage"></ion-nav>',
-  providers: [Store, Facebook]
+  // providers: [Store, Facebook]
 })
 export class MyApp {
 
@@ -26,4 +26,4 @@ export class MyApp {
   }
 }
 
-ionicBootstrap(MyApp)
+ionicBootstrap(MyApp, [Store, Facebook]);
