@@ -12,7 +12,8 @@ dependencies:
 
 test:
   override:
-    - npm test
+    - npm run mocha:rxjs
+    - npm run karma
 
 deployment:
   development:
