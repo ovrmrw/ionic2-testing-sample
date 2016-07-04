@@ -45,23 +45,3 @@ export class SignupService {
   }
 
 }
-
-
-function promiseWrapper<T>(functionHasCallback: (response: any) => void): Promise<T> {
-  return new Promise<T>((resolve, reject) => {
-    try {
-      functionHasCallback(response => {
-        resolve(response);
-      });
-    } catch (e) {
-      reject();
-    }
-  });
-}
-
-
-interface User {
-  name: string;
-  id: string;
-  error?: any;
-}

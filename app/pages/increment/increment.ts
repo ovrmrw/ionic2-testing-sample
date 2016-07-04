@@ -41,5 +41,9 @@ export class IncrementPage implements OnInit {
 
   get userName() { return this.service.userName$; }
 
+
+  // templateのasyncパイプへObservableを渡しているが、
+  // 自前でsubscribeしてtemplateに直接値を渡した方がレスポンスは速い。
+  // (asyncパイプはdirty checkingのようなものなので多少のタイムラグがある)
   get counter() { return this.service.counter$; }
 }
