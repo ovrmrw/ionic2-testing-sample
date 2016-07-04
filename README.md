@@ -147,6 +147,24 @@ AngularならそこはProtractorだろうと言われてしまうと思います
 
 ---
 
+### Android端末へアプリを配信するには
+
+[CircleCIとDeployGateで、IonicのAndroidアプリを自動デプロイ](http://matagotch.hatenablog.com/entry/2015/10/18/193105)を参考にしました。ありがとうございます。
+
+このサンプルもGitHubのdevelopmentブランチにプッシュするとCircleCIでビルドしてDeplyGateからAndroid端末に配信されるように構成してあります。  
+circle.ymlの書き方で多少嵌まりましたのでいくつかポイントを挙げておきます。
+
+- nodeはv5にする。(v6はnode-sassで引っかかる)
+- `ionic state restore`の前に`ionic hooks add`が必要。
+- android sdkは23にする。
+- ビルド時に引っかかるのでtypingsのinstallもやっておく必要がある。
+
+CircleCIへのDeployGateのトークン等の登録は上記サイトを参照してください。
+
+Android端末には[DeployGateアプリ](https://play.google.com/store/apps/details?id=com.deploygate&hl=ja)をインストールしておきましょう。
+
+---
+
 ### 何か問題が起きたら...
 
 ソースコード読みましょう。(冗談ではなく)  
