@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Rx';
 class MockStore {
   private userInfo: UserInfo = {
     userId: '',
-    name: 'Test User',
+    name: 'Satoru Tanaka',
     accessToken: ''
   };
   userInfo$ = Observable.of(this.userInfo);
@@ -45,13 +45,13 @@ describe('TEST: IncrementPage Component (with MockStore)', () => {
   }));
 
 
-  it('should have Facebook\'s usename', fakeAsyncPower(() => {
+  it('should have Facebook\'s username', fakeAsyncPower(() => {
     let fixture: ComponentFixture<IncrementPage>;
     builder.createAsync(IncrementPage).then(f => fixture = f);
     tick();
     const el = fixture.nativeElement as HTMLElement;
     fixture.detectChanges();
-    assert(elementText(el, '#username').trim() === 'Test User');
+    assert(elementText(el, '#username').trim() === 'Satoru Tanaka');
   }));
 
 });

@@ -19,7 +19,7 @@ export class IncrementPage implements OnInit {
 
   ngOnInit() { }
 
-  ionViewDidEnter() {
+  ionViewLoaded() {
     this.showToast('middle'); // ngOnInitに書くとテスト時にエラーになる。
   }
 
@@ -35,7 +35,7 @@ export class IncrementPage implements OnInit {
 
 
   increment() { this.service.increment(); }
-  
+
   decrement() { this.service.decrement(); }
 
 

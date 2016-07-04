@@ -1,5 +1,6 @@
 'use strict';
 
+/* >>> boilerplate */
 const jar = require('selenium-server-standalone-jar');
 const phantomjs = require('phantomjs-prebuilt');
 const chromedriver = require('chromedriver');
@@ -19,3 +20,4 @@ module.exports = (function (settings) {
   }
   return settings;
 })(require('./config/nightwatch.json'));
+/* <<< boilerplate */

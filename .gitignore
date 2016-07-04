@@ -48,9 +48,7 @@ node_modules
 bundles
 .bundles
 typings
-reports
 .awcache
-screenshots
 .idea/
 *.secret.json
 tests/bundles
