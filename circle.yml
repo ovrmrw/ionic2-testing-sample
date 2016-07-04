@@ -8,6 +8,7 @@ dependencies:
   post:
     - npm run typings  
     - npm install -g cordova ionic@beta
+    - ionic hooks add
     - ionic state restore
 
 test:
