@@ -44,6 +44,6 @@ export class IncrementPage implements OnInit {
 
   // templateのasyncパイプへObservableを渡しているが、
   // 自前でsubscribeしてtemplateに直接値を渡した方がレスポンスは速い。
-  // (asyncパイプはdirty checkingのようなものなので)
+  // (asyncパイプはdirty checkingのようなものなので多少のタイムラグがある)
   get counter() { return this.service.counter$; }
 }
