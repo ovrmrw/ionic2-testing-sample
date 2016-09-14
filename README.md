@@ -20,7 +20,7 @@ $ ionic serve
 
 ---
 
-### Angular2 unite test (mocha or jasmine) (bundler: webpack)
+### Angular2 unit test (mocha or jasmine) (bundler: webpack)
 ```
 $ npm run karma
 or
